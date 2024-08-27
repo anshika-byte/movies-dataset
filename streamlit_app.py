@@ -12,6 +12,18 @@ st.write(
     click on the widgets below to explore!
     """
 )
+st.components.v1.html('''
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service_worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  </script>
+''')
 
 
 # Load the data from a CSV. We're caching this so it doesn't reload every time the app
